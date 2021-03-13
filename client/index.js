@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const type = urlParams.has('type') ? urlParams.get('type') : 'all';
   const period = urlParams.has('period') ? urlParams.get('period') : 'hour';
 
-  // asdasd
   const loading = document.querySelector('.loading');
   if (loading.classList.contains('hidden')) {
     loading.classList.remove('hidden');
@@ -20,10 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const earthquakes = await fetchEarthquakes(period, type);
   const eqTitle = earthquakes.data.metadata.title;
   const eqTime = earthquakes.info.elapsed;
-  const eqCacheBool = earthquakes.info.cache == true ? '' : 'ekki';
-  
-
-  // asdasdasd
+  const eqCacheBool = earthquakes.info.cache === true ? '' : 'ekki';
   const parent = loading.parentNode;
   parent.removeChild(loading);
 
@@ -35,7 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const h1 = document.querySelector('.h1');
   const ul = document.querySelector('.earthquakes');
-  
   const cacheAndTime = document.querySelector('.cache');
 
   h1.append(eqTitle);
@@ -76,5 +71,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     ul.appendChild(li);
   });
-  
 });
